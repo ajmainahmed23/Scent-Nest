@@ -1,0 +1,21 @@
+# Everything lives in the project root; only the API endpoints sit in functions/
+[build]
+  publish   = "."
+  functions = "functions"
+
+[functions]
+  node_bundler = "esbuild"
+  # core.js and matcher.js are at the root, outside the functions folder,
+  # so they get bundled in rather than deployed as endpoints of their own
+  included_files = ["core.js", "matcher.js"]
+
+# /api/products  ->  /.netlify/functions/products
+[[redirects]]
+  from = "/api/:endpoint"
+  to   = "/.netlify/functions/:endpoint"
+  status = 200
+
+[[redirects]]
+  from = "/api/:endpoint/*"
+  to   = "/.netlify/functions/:endpoint/:splat"
+  status = 200

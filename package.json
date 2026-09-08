@@ -1,0 +1,19 @@
+{
+  "name": "scent-nest",
+  "version": "1.0.0",
+  "description": "Scent Nest — premium fragrance decant e-commerce platform",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "seed": "node seed.js",
+    "seed:reference": "node seed.js --reference ./fra_cleaned.csv",
+    "create-admin": "node create-admin.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.10.0"
+  },
+  "engines": { "node": ">=18" }
+}

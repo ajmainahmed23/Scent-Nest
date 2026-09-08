@@ -1,0 +1,1714 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scent Nest — Premium Fragrance Decants</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ============ 1. ANNOUNCEMENT BAR ============ -->
+    <div class="ticker">
+      <div class="ticker-track" id="ticker"></div>
+    </div>
+
+    <!-- ============ NAVIGATION ============ -->
+    <header class="nav">
+      <div class="shell nav-in">
+        <a class="brand" href="#top"><b>SCENT NEST</b><i>DECANTS · DHAKA</i></a>
+        <nav class="nav-links">
+          <a href="#featured" class="on" data-show-all>Shop all</a>
+          <a href="#discovery">Discovery Sets</a>
+          <a href="#notes">Notes</a>
+          <a href="#reviews">The Nest</a>
+          <a href="#letters">Journal</a>
+          <a href="#gift-cards">Gift cards</a>
+        </nav>
+        <div class="nav-search">
+          <button
+            class="search-submit"
+            id="searchBtn"
+            type="button"
+            aria-label="Search"
+          >
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2.2"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="M20 20l-3.5-3.5" />
+            </svg>
+          </button>
+          <input
+            id="search"
+            type="search"
+            placeholder="Search a note or brand…"
+            aria-label="Search fragrances"
+          />
+        </div>
+        <a href="#account" class="nav-account" id="accountBtn">Account</a>
+        <button class="bag" id="bagBtn" aria-label="Open cart">
+          Bag <span class="bag-count" id="bagCount">0</span>
+        </button>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- ============ 2. HERO ============ -->
+      <section class="hero">
+        <div class="hero-copy stagger">
+          <span class="eyebrow">Try before the full bottle</span>
+          <h1>Find the one<br /><em>that stays</em> with you.</h1>
+          <p>
+            Order 3ml, 5ml or 10ml of any authentic fragrance in the house. Live
+            with it for a fortnight before you spend on a full bottle. Cash on
+            delivery, anywhere in Bangladesh.
+          </p>
+          <div class="hero-cta">
+            <a href="#discovery" class="btn btn-gold">Build a discovery set</a>
+            <a href="#featured" class="btn btn-ghost" data-show-all
+              >Shop all 42</a
+            >
+          </div>
+          <div class="hero-stats">
+            <div><b>42</b><span>Fragrances</span></div>
+            <div><b>3ml+</b><span>Sample sizes</span></div>
+            <div><b>48h</b><span>Dhaka delivery</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" id="heroVisual">
+          <div
+            class="hero-flacon hatch image-surface"
+            id="heroFlacon"
+            style="
+              background-image:
+                linear-gradient(
+                  90deg,
+                  rgba(15, 15, 17, 0.32),
+                  rgba(15, 15, 17, 0.08)
+                ),
+                url(&quot;all_perfume_photos_HD/212_Men_NYC.jpg&quot;);
+            "
+          >
+            <div class="hero-glow"></div>
+          </div>
+          <div class="hero-card">
+            <span class="eyebrow">New arrival</span>
+            <b>212 Men NYC</b>
+            <span>Fresh green notes · aromatic woods</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 3. HOW IT WORKS ============ -->
+      <section class="steps">
+        <div class="shell steps-in">
+          <div class="step">
+            <div class="step-n">01</div>
+            <div>
+              <h4>Choose your vials</h4>
+              <p>Any fragrance in the house, in 3ml, 5ml or 10ml.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">02</div>
+            <div>
+              <h4>Pay on delivery</h4>
+              <p>Cash when the courier hands it over. Nothing upfront.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">03</div>
+            <div>
+              <h4>Live with it</h4>
+              <p>
+                Wear it for two weeks. Your skin decides, not a shop assistant.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 4. FEATURED GRID ============ -->
+      <section class="sec shell" id="featured">
+        <div class="sec-head rise">
+          <div>
+            <span class="eyebrow">The house favourites</span>
+            <h2>Featured fragrances</h2>
+          </div>
+          <div class="filters" id="filters">
+            <button class="on" data-f="all">All</button>
+            <button data-f="woody">Woody</button>
+            <button data-f="floral">Floral</button>
+            <button data-f="amber">Amber</button>
+            <button data-f="fresh">Fresh</button>
+            <a href="#featured" class="all-link" data-show-all>View all →</a>
+          </div>
+        </div>
+        <div class="grid" id="grid"></div>
+      </section>
+
+      <!-- ============ 5. DISCOVERY SET ============ -->
+      <section class="discovery" id="discovery">
+        <div
+          class="discovery-media hatch light image-surface"
+          style="
+            background-image:
+              linear-gradient(
+                90deg,
+                rgba(228, 222, 210, 0.2),
+                rgba(228, 222, 210, 0.05)
+              ),
+              url(&quot;https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&amp;fit=crop&amp;w=1200&amp;q=85&quot;);
+          "
+        ></div>
+        <div class="discovery-copy">
+          <span class="eyebrow">Discovery set · ৳2,400</span>
+          <h2>Eight vials.<br />One decision.</h2>
+          <p>
+            Pick any eight 3ml vials from the full house — or let us choose from
+            your answers to the scent diagnostic. Delivered together, paid on
+            arrival.
+          </p>
+          <div class="vials">
+            <span class="vial">Asad</span>
+            <span class="vial">Khamrah</span>
+            <span class="vial">Oud for Glory</span>
+            <span class="vial more">+ 5 more</span>
+          </div>
+          <div class="discovery-cta">
+            <button class="btn btn-ink" id="buildSet">Build my set</button>
+            <button class="btn btn-outline-ink">Take the diagnostic</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 6. SCENT MATCH FEATURE ============ -->
+      <section class="sec shell match-feature" id="scent-match">
+        <div class="sec-head rise">
+          <div>
+            <span class="eyebrow">Find your next signature</span>
+            <h2>Scent match finder</h2>
+          </div>
+        </div>
+        <div class="match-layout rise">
+          <div class="match-panel">
+            <label for="matchInput">Describe the fragrance you want</label>
+            <textarea
+              id="matchInput"
+              rows="4"
+              placeholder="Try: fresh citrus, woody, amber or sweet vanilla tobacco"
+            ></textarea>
+
+            <div class="match-preferences">
+              <label for="matchPreference">When do you wear it?</label>
+              <select id="matchPreference">
+                <option value="regular">Regular wear</option>
+                <option value="office">Office / daily</option>
+                <option value="party">Party / evening</option>
+                <option value="night">Night / date night</option>
+                <option value="casual">Casual / relaxed</option>
+              </select>
+            </div>
+
+            <div class="match-actions">
+              <button class="btn btn-gold" id="matchBtn" type="button">
+                Find similar scents
+              </button>
+              <button class="btn btn-ghost" id="matchClear" type="button">
+                Clear
+              </button>
+            </div>
+            <p class="match-hint">
+              We compare your notes and wear preference against the house
+              catalog and suggest the closest decants in stock.
+            </p>
+          </div>
+          <div class="match-results" id="matchResults">
+            <div class="match-empty">
+              Example: “fresh citrus, woody, amber” or “vanilla tobacco”
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 7. SHOP BY NOTE ============ -->
+      <section class="sec shell" id="notes">
+        <div class="sec-head rise">
+          <h2>Shop by note</h2>
+          <a href="#notes" class="all-link">All notes →</a>
+        </div>
+        <div class="notes-grid rise" id="noteGrid"></div>
+      </section>
+
+      <!-- ============ 7. REVIEWS ============ -->
+      <section class="sec shell" id="reviews" style="padding-top: 0">
+        <div class="reviews rise">
+          <div class="review">
+            <i>★★★★★</i>
+            <p>
+              “Ordered five vials, wore each for a week, and bought the one I
+              never wanted to wash off.”
+            </p>
+            <span>Amara T. · Verified</span>
+          </div>
+          <div class="review">
+            <i>★★★★★</i>
+            <p>
+              “The only shop that tells you how long a scent actually lasts.
+              Khamrah goes twelve hours on me.”
+            </p>
+            <span>Idris K. · Verified</span>
+          </div>
+          <div class="review">
+            <i>★★★★★</i>
+            <p>
+              “Paid the courier at my gate in Dhanmondi. No card, no fuss.
+              Reason enough to stop buying blind.”
+            </p>
+            <span>Lena M. · Verified</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 8. NEWSLETTER ============ -->
+      <section class="letters" id="letters">
+        <div class="shell letters-in">
+          <div>
+            <h2>Letters from the nest</h2>
+            <p>New releases, restocks and one note explained each month.</p>
+          </div>
+          <form id="subForm">
+            <input
+              type="email"
+              placeholder="your@email.com"
+              required
+              aria-label="Email address"
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </section>
+      <!-- ============ 8. GIFT CARDS ============ -->
+      <section class="gift-cards" id="gift-cards">
+        <div class="shell">
+          <div class="sec-head">
+            <div>
+              <span class="eyebrow">A little something from the nest</span>
+              <h2>Gift cards</h2>
+            </div>
+            <p class="gift-intro">
+              Share a scent discovery with someone special.
+            </p>
+          </div>
+          <div class="gift-grid">
+            <article class="gift-card">
+              <span class="gift-label">The first spritz</span>
+              <strong>৳500</strong>
+              <code>SCENT-5F8K-24</code>
+              <button class="btn btn-paper gift-copy" data-code="SCENT-5F8K-24">
+                Copy code
+              </button>
+            </article>
+            <article class="gift-card featured-gift">
+              <span class="gift-label">The full discovery</span>
+              <strong>৳1,000</strong>
+              <code>NEST-1K7M-26</code>
+              <button class="btn btn-gold gift-copy" data-code="NEST-1K7M-26">
+                Copy code
+              </button>
+            </article>
+            <article class="gift-card">
+              <span class="gift-label">The grand gesture</span>
+              <strong>৳2,000</strong>
+              <code>SCENT-2Q9R-26</code>
+              <button class="btn btn-paper gift-copy" data-code="SCENT-2Q9R-26">
+                Copy code
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FOOTER ============ -->
+      <footer class="foot">
+        <div class="shell">
+          <div class="foot-in">
+            <div class="foot-brand">
+              <b>SCENT NEST</b>
+              <p>
+                Authentic fragrance decants, Dhaka. Every fragrance available in
+                3ml before you commit to a bottle.
+              </p>
+              <div class="foot-social">
+                <a
+                  href="https://www.instagram.com/scent_nest2200?stkn=MTJyaThhZmx0MHZkNg=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Instagram</a
+                ><a
+                  href="https://www.facebook.com/scentnest12"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Facebook</a
+                ><a
+                  href="https://wa.me/8801887859159"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >WhatsApp</a
+                >
+              </div>
+              <div class="foot-contact">
+                <a href="tel:+8801887859159">+880 1887-859159</a>
+                <a href="mailto:nestscent@gmail.com">nestscent@gmail.com</a>
+              </div>
+            </div>
+            <div class="foot-col">
+              <h5>Shop</h5>
+              <a href="#featured">All fragrances</a
+              ><a href="#discovery">Discovery sets</a>
+              <a href="#notes">Shop by note</a
+              ><a href="#gift-cards">Gift cards</a
+              ><a href="#featured">Under ৳500</a>
+            </div>
+            <div class="foot-col">
+              <h5>Discover</h5>
+              <a href="#discovery">Scent diagnostic</a
+              ><a href="#notes">Notes library</a>
+              <a href="#letters">The journal</a
+              ><a href="#reviews">Authenticity</a>
+            </div>
+            <div class="foot-col">
+              <h5>Support</h5>
+              <a href="#account" data-open-account>Track my order</a
+              ><a href="#letters">Delivery &amp; returns</a>
+              <a href="#discovery">Cash on delivery</a
+              ><a
+                href="https://wa.me/8801887859159"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Contact on WhatsApp</a
+              >
+            </div>
+          </div>
+          <div class="foot-bar">
+            <span>© 2026 Scent Nest</span>
+            <span>Privacy · Terms · Authenticity policy</span>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- ============ 9. CART DRAWER ============ -->
+    <div class="scrim" id="scrim"></div>
+    <aside class="drawer" id="drawer" aria-label="Shopping cart">
+      <div class="drawer-head">
+        <h3>Your bag</h3>
+        <button class="x" id="closeDrawer" aria-label="Close cart">✕</button>
+      </div>
+      <div class="drawer-body" id="drawerBody"></div>
+      <div class="drawer-foot" id="drawerFoot" hidden>
+        <div class="totals">
+          <div><span>Subtotal</span><span id="sub">৳0</span></div>
+          <div><span>Delivery — Dhaka</span><span id="ship">৳60</span></div>
+          <div class="grand"><span>Total</span><b id="grand">৳0</b></div>
+        </div>
+        <div class="cod-note">
+          <span style="color: var(--gold)">◆</span>
+          <span
+            >Cash on delivery. Pay the courier when your vials arrive — nothing
+            is charged now.</span
+          >
+        </div>
+        <button class="btn btn-gold btn-block" id="toCheckout">
+          Checkout with cash on delivery
+        </button>
+      </div>
+    </aside>
+
+    <!-- ============ 10. COD CHECKOUT ============ -->
+    <div class="modal" id="checkout">
+      <div class="modal-box">
+        <div class="modal-head">
+          <div>
+            <span class="eyebrow">Step 2 of 2 · Cash on delivery</span>
+            <h3 id="coTitle">Where should we send it?</h3>
+          </div>
+          <button class="x" id="closeCheckout" aria-label="Close checkout">
+            ✕
+          </button>
+        </div>
+        <div class="modal-body" id="coBody"></div>
+      </div>
+    </div>
+
+    <!-- ============ QUICK VIEW ============ -->
+    <div class="modal" id="quick">
+      <div class="modal-box">
+        <div class="modal-head">
+          <div id="qvHead"></div>
+          <button class="x" id="closeQuick" aria-label="Close quick view">
+            ✕
+          </button>
+        </div>
+        <div class="modal-body" id="qvBody"></div>
+      </div>
+    </div>
+
+    <!-- ============ CUSTOMER ACCOUNT ============ -->
+    <div class="modal" id="account">
+      <div class="modal-box account-box">
+        <div class="modal-head">
+          <div>
+            <span class="eyebrow">Your Scent Nest account</span>
+            <h3 id="accountTitle">Welcome back</h3>
+          </div>
+          <button class="x" id="closeAccount" aria-label="Close account">
+            ✕
+          </button>
+        </div>
+        <div class="modal-body" id="accountBody"></div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+    <script src="matcher.js"></script>
+    <script src="catalog-data.js"></script>
+    <script>
+      /* ============================================================
+   DATA — real note structures, decant pricing in BDT
+   ============================================================ */
+      const TICKER = [
+        "Free 3ml vial over ৳2,000",
+        "100% authentic, batch verified",
+        "Cash on delivery nationwide",
+        "Dhaka delivery in 48h",
+        "42 fragrances, all in 3ml",
+      ];
+
+      const DEMO_PRODUCTS = [
+        {
+          id: "asad",
+          name: "Asad",
+          brand: "Lattafa",
+          image:
+            "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=900&q=85",
+          family: "amber",
+          badge: "Bestseller",
+          notes: "Black pepper · tobacco &amp; coffee · vanilla, amber",
+          top: ["Black pepper", "Tobacco", "Pineapple"],
+          mid: ["Patchouli", "Coffee", "Iris"],
+          base: ["Vanilla", "Amber", "Dry wood"],
+          rating: 4.3,
+          count: 5345,
+          bottle: 3900,
+          prices: { 3: 420, 5: 650, 10: 1150 },
+          stock: { 3: 18, 5: 9, 10: 4 },
+        },
+
+        {
+          id: "khamrah",
+          name: "Khamrah",
+          brand: "Lattafa",
+          image:
+            "https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=900&q=85",
+          family: "amber",
+          badge: "New",
+          notes: "Cinnamon · dates &amp; praline · tonka bean",
+          top: ["Cinnamon", "Nutmeg", "Bergamot"],
+          mid: ["Dates", "Praline", "Tuberose"],
+          base: ["Vanilla", "Tonka bean", "Amberwood"],
+          rating: 4.4,
+          count: 9276,
+          bottle: 4200,
+          prices: { 3: 550, 5: 820, 10: 1450 },
+          stock: { 3: 24, 5: 12, 10: 6 },
+        },
+
+        {
+          id: "oud-glory",
+          name: "Oud for Glory",
+          brand: "Lattafa",
+          image:
+            "https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=900&q=85",
+          family: "woody",
+          badge: "Cult",
+          notes: "Saffron &amp; nutmeg · agarwood · patchouli, musk",
+          top: ["Saffron", "Nutmeg", "Lavender"],
+          mid: ["Agarwood (oud)", "Patchouli"],
+          base: ["Agarwood (oud)", "Patchouli", "Musk"],
+          rating: 4.2,
+          count: 4222,
+          bottle: 4400,
+          prices: { 3: 520, 5: 780, 10: 1400 },
+          stock: { 3: 15, 5: 7, 10: 3 },
+        },
+
+        {
+          id: "sauvage",
+          name: "Sauvage",
+          brand: "Dior",
+          image:
+            "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=900&q=85",
+          family: "fresh",
+          badge: "Bestseller",
+          notes: "Calabrian bergamot · pepper · ambroxan, cedar",
+          top: ["Calabrian bergamot", "Pepper"],
+          mid: ["Sichuan pepper", "Lavender", "Pink pepper"],
+          base: ["Ambroxan", "Cedar", "Labdanum"],
+          rating: 3.9,
+          count: 23727,
+          bottle: 14500,
+          prices: { 3: 890, 5: 1350, 10: 2450 },
+          stock: { 3: 11, 5: 5, 10: 2 },
+        },
+
+        {
+          id: "bdc",
+          name: "Bleu de Chanel",
+          brand: "Chanel",
+          image:
+            "https://images.unsplash.com/photo-1587017539504-67cfbddac569?auto=format&fit=crop&w=900&q=85",
+          family: "fresh",
+          badge: "",
+          notes: "Grapefruit &amp; mint · ginger · incense, cedar",
+          top: ["Grapefruit", "Lemon", "Mint"],
+          mid: ["Ginger", "Nutmeg", "Jasmine"],
+          base: ["Incense", "Amber", "Cedar"],
+          rating: 4.4,
+          count: 13646,
+          bottle: 16800,
+          prices: { 3: 950, 5: 1420, 10: 2600 },
+          stock: { 3: 9, 5: 4, 10: 0 },
+        },
+
+        {
+          id: "br540",
+          name: "Baccarat Rouge 540",
+          brand: "MFK",
+          image:
+            "https://images.unsplash.com/photo-1563170351-be82bc888aa4?auto=format&fit=crop&w=900&q=85",
+          family: "woody",
+          badge: "Low stock",
+          notes: "Saffron &amp; jasmine · amberwood · cedar, fir resin",
+          top: ["Saffron", "Jasmine"],
+          mid: ["Amberwood", "Ambergris"],
+          base: ["Fir resin", "Cedar"],
+          rating: 3.9,
+          count: 20435,
+          bottle: 38000,
+          prices: { 3: 1950, 5: 2900, 10: 5400 },
+          stock: { 3: 4, 5: 2, 10: 0 },
+        },
+
+        {
+          id: "libre",
+          name: "Libre",
+          brand: "YSL",
+          image:
+            "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=900&q=85",
+          family: "floral",
+          badge: "",
+          notes: "Lavender &amp; mandarin · orange blossom · vanilla, musk",
+          top: ["Lavender", "Mandarin orange", "Black currant"],
+          mid: ["Lavender", "Orange blossom", "Jasmine"],
+          base: ["Madagascar vanilla", "Musk", "Cedar"],
+          rating: 3.9,
+          count: 14331,
+          bottle: 13200,
+          prices: { 3: 900, 5: 1350, 10: 2450 },
+          stock: { 3: 13, 5: 6, 10: 3 },
+        },
+
+        {
+          id: "layton",
+          name: "Layton",
+          brand: "Parfums de Marly",
+          image:
+            "https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=900&q=85",
+          family: "amber",
+          badge: "Cult",
+          notes: "Apple &amp; lavender · violet · vanilla, sandalwood",
+          top: ["Apple", "Lavender", "Bergamot"],
+          mid: ["Geranium", "Violet", "Jasmine"],
+          base: ["Vanilla", "Cardamom", "Sandalwood"],
+          rating: 4.5,
+          count: 11455,
+          bottle: 31000,
+          prices: { 3: 1600, 5: 2400, 10: 4400 },
+          stock: { 3: 7, 5: 3, 10: 1 },
+        },
+      ];
+
+      const PRODUCTS = window.SHEET_PRODUCTS;
+
+      const NOTES = [
+        ["Vetiver", 9],
+        ["Oud", 7],
+        ["Iris", 6],
+        ["Vanilla", 8],
+        ["Tonka", 5],
+        ["Sea salt", 4],
+      ];
+      const SHIPPING = 60;
+      const money = (n) => "৳" + n.toLocaleString("en-US");
+
+      /* ============================================================
+   TICKER
+   ============================================================ */
+      const tickerEl = document.getElementById("ticker");
+      tickerEl.innerHTML = [...TICKER, ...TICKER]
+        .map((t) => `<span>${t}</span>`)
+        .join("");
+
+      /* ============================================================
+   PRODUCT GRID + DECANT SIZE SELECTOR
+   ============================================================ */
+      const grid = document.getElementById("grid");
+      const chosen = {}; // productId -> selected ml
+      PRODUCTS.forEach((p) => {
+        chosen[p.id] =
+          Number(Object.keys(p.prices).find((s) => p.stock[s] > 0)) || 3;
+      });
+
+      function stars(r) {
+        const full = Math.round(r);
+        return (
+          "★".repeat(full) +
+          '<span style="color:#3F3F46">' +
+          "★".repeat(5 - full) +
+          "</span>"
+        );
+      }
+
+      function cardHTML(p) {
+        const ml = chosen[p.id];
+        const badgeCls =
+          p.badge.toLowerCase() === "low stock" ? "badge low" : "badge";
+        return `<article class="card rise" data-family="${p.family}" data-id="${p.id}">
+    <div class="card-media hatch image-surface" style="background-image:linear-gradient(180deg,rgba(15,15,17,.08),rgba(15,15,17,.72)),url('${p.image}')">
+      <span class="card-brand">${p.brand}</span>
+      ${p.badge ? `<span class="${badgeCls}">${p.badge}</span>` : ""}
+      <button class="quick" data-quick="${p.id}">Quick view +</button>
+    </div>
+    <div class="card-body">
+      <h3>${p.name}</h3>
+      <p class="card-notes">${p.notes}</p>
+      <div class="stars"><i>${stars(p.rating)}</i> ${p.rating} · ${p.count.toLocaleString()} reviews</div>
+      <div class="size-label">Choose a size</div>
+      <div class="sizes" data-sizes="${p.id}">
+        ${[3, 5, 10]
+          .map(
+            (s) => `
+          <button data-ml="${s}" class="${s === ml ? "on" : ""}"
+            ${p.stock[s] === 0 ? 'disabled title="Out of stock"' : ""}>${s}ml</button>`,
+          )
+          .join("")}
+      </div>
+      <div class="price-row">
+        <span class="price" data-price="${p.id}">${money(p.prices[ml])}</span>
+        <span class="price-full">Bottle ${money(p.bottle)}</span>
+      </div>
+      <button class="btn btn-paper btn-block" data-add="${p.id}">Add to cart</button>
+    </div>
+  </article>`;
+      }
+
+      function renderGrid(filter = "all", query = "") {
+        const q = query.trim().toLowerCase();
+        const terms = q.split(/\s+/).filter(Boolean);
+        const list = PRODUCTS.filter((p) => {
+          const inFamily = filter === "all" || p.family === filter;
+          const hay =
+            `${p.name} ${p.brand} ${p.notes} ${p.top} ${p.mid} ${p.base}`.toLowerCase();
+          return inFamily && terms.every((term) => hay.includes(term));
+        });
+        grid.innerHTML = list.length
+          ? list.map(cardHTML).join("")
+          : `<p style="color:var(--muted);grid-column:1/-1;padding:36px 0">
+         No fragrances matched your search.</p>`;
+        observeRise();
+      }
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let io;
+      renderGrid();
+
+      /* filter tabs */
+      document.getElementById("filters").addEventListener("click", (e) => {
+        const b = e.target.closest("button[data-f]");
+        if (!b) return;
+        document
+          .querySelectorAll("#filters button")
+          .forEach((x) => x.classList.remove("on"));
+        b.classList.add("on");
+        renderGrid(b.dataset.f, document.getElementById("search").value);
+      });
+
+      document.querySelectorAll("[data-show-all]").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.getElementById("search").value = "";
+          document.querySelectorAll("#filters button").forEach((button) => {
+            button.classList.toggle("on", button.dataset.f === "all");
+          });
+          renderGrid("all");
+        });
+      });
+
+      /* size selection — animates the price, updates stock */
+      grid.addEventListener("click", (e) => {
+        const sizeBtn = e.target.closest("[data-sizes] button");
+        if (sizeBtn && !sizeBtn.disabled) {
+          const id = sizeBtn.closest("[data-sizes]").dataset.sizes;
+          const ml = Number(sizeBtn.dataset.ml);
+          chosen[id] = ml;
+          sizeBtn.parentElement
+            .querySelectorAll("button")
+            .forEach((b) => b.classList.remove("on"));
+          sizeBtn.classList.add("on");
+
+          const priceEl = grid.querySelector(`[data-price="${id}"]`);
+          const p = PRODUCTS.find((x) => x.id === id);
+          priceEl.classList.remove("flip");
+          void priceEl.offsetWidth; // restart the animation
+          priceEl.textContent = money(p.prices[ml]);
+          priceEl.classList.add("flip");
+          return;
+        }
+
+        const addBtn = e.target.closest("[data-add]");
+        if (addBtn) {
+          addToCart(addBtn.dataset.add, addBtn);
+          return;
+        }
+
+        const qv = e.target.closest("[data-quick]");
+        if (qv) openQuick(qv.dataset.quick);
+      });
+
+      /* ============================================================
+   SHOP BY NOTE
+   ============================================================ */
+      document.getElementById("noteGrid").innerHTML = NOTES.map(
+        ([n, c]) =>
+          `<a class="note-tile" href="#featured"><div class="note-ring"></div>
+     <b>${n}</b><span>${c} scents</span></a>`,
+      ).join("");
+
+      /* ============================================================
+   SCENT MATCH FEATURE
+   ============================================================ */
+      const matchInput = document.getElementById("matchInput");
+      const matchPreference = document.getElementById("matchPreference");
+      const matchResults = document.getElementById("matchResults");
+
+      function preferenceTimeOfDay(value) {
+        const map = {
+          regular: ["day", "night", "office", "casual"],
+          office: ["day", "office", "casual"],
+          party: ["night", "evening", "party"],
+          night: ["night", "evening", "party"],
+          casual: ["day", "casual", "office"],
+        };
+        return map[value] || map.regular;
+      }
+
+      function productTimeOfDay(product) {
+        const text =
+          `${product.name} ${product.brand} ${product.notes || ""}`.toLowerCase();
+        if (/amber|vanilla|tobacco|oud|smoky|patchouli|spicy/.test(text)) {
+          return ["night", "evening", "party"];
+        }
+        if (
+          /fresh|citrus|aquatic|marine|green|mint|bergamot|lavender/.test(text)
+        ) {
+          return ["day", "office", "casual"];
+        }
+        if (
+          /floral|sweet|jasmine|rose|orange blossom|white floral/.test(text)
+        ) {
+          return ["day", "casual", "office"];
+        }
+        return ["day", "night", "casual"];
+      }
+
+      function buildMatchTarget(rawText, preference) {
+        const text = String(rawText || "").trim();
+        const tokens = text
+          .toLowerCase()
+          .replace(/&/g, " ")
+          .replace(/[^a-z0-9\s]/g, " ")
+          .split(/\s+/)
+          .filter(Boolean);
+
+        const topTerms = [
+          "citrus",
+          "bergamot",
+          "grapefruit",
+          "lemon",
+          "orange",
+          "pepper",
+          "mint",
+          "apple",
+          "marine",
+          "fresh",
+          "green",
+          "lavender",
+          "saffron",
+          "cinnamon",
+          "nutmeg",
+          "ginger",
+          "pineapple",
+        ];
+        const middleTerms = [
+          "woody",
+          "amber",
+          "vanilla",
+          "sweet",
+          "spicy",
+          "floral",
+          "jasmine",
+          "iris",
+          "tobacco",
+          "dates",
+          "praline",
+          "coffee",
+          "tea",
+          "patchouli",
+          "benzoin",
+          "oud",
+          "amberwood",
+          "floral",
+        ];
+        const baseTerms = [
+          "musk",
+          "cedar",
+          "sandalwood",
+          "vetiver",
+          "amberwood",
+          "tonka",
+          "labdanum",
+          "resin",
+          "smoky",
+          "woody",
+          "vanilla",
+          "oud",
+          "patchouli",
+          "musk",
+        ];
+
+        const top = [];
+        const middle = [];
+        const base = [];
+
+        tokens.forEach((token) => {
+          if (topTerms.includes(token)) top.push(token);
+          else if (middleTerms.includes(token)) middle.push(token);
+          else if (baseTerms.includes(token)) base.push(token);
+          else if (!top.length && !middle.length && !base.length)
+            base.push(token);
+          else if (top.length || middle.length) base.push(token);
+        });
+
+        return {
+          name: text || "My scent match",
+          brand: "Your preference",
+          gender: "unisex",
+          notes: {
+            top: [...new Set(top)].slice(0, 4),
+            middle: [...new Set(middle)].slice(0, 4),
+            base: [...new Set(base)].slice(0, 4),
+          },
+          accords: [...new Set(tokens)].slice(0, 5),
+          season: [],
+          timeOfDay: preferenceTimeOfDay(preference),
+        };
+      }
+
+      function renderMatchResults() {
+        if (!window.ScentMatch) {
+          matchResults.innerHTML =
+            '<div class="match-empty">The matcher is not available right now.</div>';
+          return;
+        }
+
+        const query = matchInput.value.trim();
+        if (!query) {
+          matchResults.innerHTML =
+            '<div class="match-empty">Example: “fresh citrus, woody, amber” or “vanilla tobacco”</div>';
+          return;
+        }
+
+        const preference = matchPreference.value;
+        const target = buildMatchTarget(query, preference);
+        const inventory = PRODUCTS.map((p) => ({
+          ...p,
+          image: p.image,
+          timeOfDay: productTimeOfDay(p),
+          notes: {
+            top: Array.isArray(p.top) ? p.top : [],
+            middle: Array.isArray(p.mid) ? p.mid : [],
+            base: Array.isArray(p.base) ? p.base : [],
+          },
+          accords: [
+            ...(Array.isArray(p.top) ? p.top.slice(0, 3) : []),
+            ...(Array.isArray(p.mid) ? p.mid.slice(0, 2) : []),
+            ...(Array.isArray(p.base) ? p.base.slice(0, 2) : []),
+          ],
+        }));
+
+        const results = window.ScentMatch.recommend(target, inventory, {
+          limit: 3,
+          minMatch: 15,
+        });
+
+        if (!results.length) {
+          matchResults.innerHTML = `
+            <div class="match-empty">
+              We could not find a close match from the current catalog. Try a
+              broader description like “fresh, woody, spicy” or “sweet vanilla”.
+            </div>`;
+          return;
+        }
+
+        matchResults.innerHTML = results
+          .map((result) => {
+            const product = PRODUCTS.find(
+              (item) =>
+                item.name === result.name && item.brand === result.brand,
+            );
+            const image =
+              product?.image || "all_perfume_photos_HD/Hawas_Ice.jpg";
+
+            return `
+              <article class="match-card">
+                <img src="${image}" alt="${result.name}" />
+                <div class="match-card-body">
+                  <div class="match-card-head">
+                    <span>${result.brand}</span>
+                    <strong>${result.match}%</strong>
+                  </div>
+                  <h3>${result.name}</h3>
+                  <p>${result.reason}</p>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+      }
+
+      document
+        .getElementById("matchBtn")
+        .addEventListener("click", renderMatchResults);
+      document.getElementById("matchClear").addEventListener("click", () => {
+        matchInput.value = "";
+        matchPreference.value = "regular";
+        renderMatchResults();
+      });
+      matchPreference.addEventListener("change", renderMatchResults);
+      matchInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
+          renderMatchResults();
+        }
+      });
+
+      /* ============================================================
+   CART
+   ============================================================ */
+      let cart = [];
+      const scrim = document.getElementById("scrim");
+      const drawer = document.getElementById("drawer");
+      const bagCount = document.getElementById("bagCount");
+      const bagBtn = document.getElementById("bagBtn");
+
+      function addToCart(id, sourceBtn) {
+        const p = PRODUCTS.find((x) => x.id === id);
+        const ml = chosen[id];
+        if (p.stock[ml] === 0) {
+          toast(`${p.name} ${ml}ml is out of stock.`);
+          return;
+        }
+
+        const line = cart.find((l) => l.id === id && l.ml === ml);
+        if (line) line.qty++;
+        else
+          cart.push({
+            id,
+            ml,
+            qty: 1,
+            name: p.name,
+            brand: p.brand,
+            price: p.prices[ml],
+          });
+
+        flyToBag(sourceBtn);
+        sourceBtn.animate(
+          [
+            { transform: "scale(1)" },
+            { transform: "scale(.955)" },
+            { transform: "scale(1)" },
+          ],
+          { duration: 280, easing: "cubic-bezier(.22,.61,.36,1)" },
+        );
+        syncCart();
+        toast(`${p.name} ${ml}ml added to your bag.`);
+      }
+
+      function syncCart() {
+        const units = cart.reduce((n, l) => n + l.qty, 0);
+        bagCount.textContent = units;
+        bagBtn.classList.remove("bump");
+        void bagBtn.offsetWidth;
+        if (units) bagBtn.classList.add("bump");
+
+        const body = document.getElementById("drawerBody");
+        const foot = document.getElementById("drawerFoot");
+
+        if (!cart.length) {
+          body.innerHTML = `<div class="empty-cart"><b>Your bag is empty</b>
+      Pick a 3ml vial and live with it for a fortnight.</div>`;
+          foot.hidden = true;
+          return;
+        }
+
+        body.innerHTML = cart
+          .map(
+            (l, i) => `
+    <div class="line">
+      <div class="line-media hatch image-surface" style="background-image:linear-gradient(180deg,rgba(15,15,17,.08),rgba(15,15,17,.45)),url('${PRODUCTS.find((p) => p.id === l.id)?.image || ""}')"></div>
+      <div>
+        <h4>${l.name}</h4>
+        <div class="line-meta">${l.brand} · ${l.ml}ml decant</div>
+        <div class="qty">
+          <button data-q="${i}" data-d="-1" aria-label="Decrease quantity">−</button>
+          <span>${l.qty}</span>
+          <button data-q="${i}" data-d="1" aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+      <div class="line-right">
+        <span class="line-price">${money(l.price * l.qty)}</span>
+        <button class="line-remove" data-rm="${i}">Remove</button>
+      </div>
+    </div>`,
+          )
+          .join("");
+
+        const sub = cart.reduce((n, l) => n + l.price * l.qty, 0);
+        document.getElementById("sub").textContent = money(sub);
+        document.getElementById("ship").textContent = money(SHIPPING);
+        document.getElementById("grand").textContent = money(sub + SHIPPING);
+        foot.hidden = false;
+      }
+
+      document.getElementById("drawerBody").addEventListener("click", (e) => {
+        const q = e.target.closest("[data-q]");
+        if (q) {
+          const l = cart[q.dataset.q];
+          l.qty += Number(q.dataset.d);
+          if (l.qty <= 0) cart.splice(q.dataset.q, 1);
+          syncCart();
+          return;
+        }
+        const rm = e.target.closest("[data-rm]");
+        if (rm) {
+          cart.splice(rm.dataset.rm, 1);
+          syncCart();
+        }
+      });
+
+      const openDrawer = () => {
+        drawer.classList.add("open");
+        scrim.classList.add("open");
+      };
+      const closeAll = () => {
+        drawer.classList.remove("open");
+        scrim.classList.remove("open");
+        document.getElementById("checkout").classList.remove("open");
+        document.getElementById("quick").classList.remove("open");
+        document.getElementById("account").classList.remove("open");
+      };
+      bagBtn.addEventListener("click", openDrawer);
+      document
+        .getElementById("closeDrawer")
+        .addEventListener("click", closeAll);
+      scrim.addEventListener("click", closeAll);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeAll();
+      });
+      syncCart();
+
+      /* flying +1 counter */
+      function flyToBag(from) {
+        if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const a = from.getBoundingClientRect(),
+          b = bagBtn.getBoundingClientRect();
+        const dot = document.createElement("div");
+        dot.className = "fly";
+        dot.textContent = "+1";
+        dot.style.left = a.left + a.width / 2 - 13 + "px";
+        dot.style.top = a.top + a.height / 2 - 13 + "px";
+        document.body.appendChild(dot);
+        dot.animate(
+          [
+            { transform: "translate(0,0) scale(1)", opacity: 1 },
+            {
+              transform: `translate(${b.left + b.width / 2 - a.left - a.width / 2}px,
+                 ${b.top + b.height / 2 - a.top - a.height / 2}px) scale(.45)`,
+              opacity: 0,
+            },
+          ],
+          { duration: 700, easing: "cubic-bezier(.4,.1,.3,1)" },
+        ).onfinish = () => dot.remove();
+      }
+
+      /* ============================================================
+   QUICK VIEW
+   ============================================================ */
+      function openQuick(id) {
+        const p = PRODUCTS.find((x) => x.id === id);
+        const ml = chosen[id];
+        document.getElementById("qvHead").innerHTML =
+          `<span class="eyebrow">${p.brand}</span><h3 style="margin:6px 0 0">${p.name}</h3>`;
+
+        const layer = (label, arr) => `
+    <div style="display:grid;grid-template-columns:88px 1fr;gap:14px;padding:11px 0;
+                border-bottom:1px solid var(--surface)">
+      <span style="font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#6B6B73">${label}</span>
+      <span style="font-size:13.5px">${arr.join(" · ")}</span>
+    </div>`;
+
+        document.getElementById("qvBody").innerHTML = `
+    <div class="hatch image-surface" style="aspect-ratio:16/9;margin-bottom:20px;background-image:linear-gradient(180deg,rgba(15,15,17,.08),rgba(15,15,17,.55)),url('${p.image}')">
+    </div>
+    <div style="border-top:1px solid var(--surface);margin-bottom:20px">
+      ${layer("Opens with", p.top)}${layer("Heart", p.mid)}${layer("Dries to", p.base)}
+    </div>
+    <div class="size-label">Choose a size</div>
+    <div class="sizes" id="qvSizes" style="margin-bottom:18px">
+      ${[3, 5, 10]
+        .map(
+          (s) => `<button data-ml="${s}" class="${s === ml ? "on" : ""}"
+        ${p.stock[s] === 0 ? "disabled" : ""}>${s}ml — ${money(p.prices[s])}</button>`,
+        )
+        .join("")}
+    </div>
+    <button class="btn btn-gold btn-block" id="qvAdd">Add to cart</button>`;
+
+        document.getElementById("qvSizes").addEventListener("click", (e) => {
+          const b = e.target.closest("button");
+          if (!b || b.disabled) return;
+          chosen[id] = Number(b.dataset.ml);
+          document
+            .querySelectorAll("#qvSizes button")
+            .forEach((x) => x.classList.remove("on"));
+          b.classList.add("on");
+          renderGrid(document.querySelector("#filters button.on").dataset.f);
+        });
+        document.getElementById("qvAdd").addEventListener("click", (e) => {
+          addToCart(id, e.currentTarget);
+          document.getElementById("quick").classList.remove("open");
+        });
+
+        document.getElementById("quick").classList.add("open");
+        scrim.classList.add("open");
+      }
+      document.getElementById("closeQuick").addEventListener("click", closeAll);
+
+      /* ============================================================
+   COD CHECKOUT
+   ============================================================ */
+      const checkout = document.getElementById("checkout");
+      const deliveryForCity = (city) =>
+        !city.trim() || /dhaka/i.test(city) ? 60 : 120;
+
+      function checkoutForm() {
+        const sub = cart.reduce((n, l) => n + l.price * l.qty, 0);
+        document.getElementById("coTitle").textContent =
+          "Where should we send it?";
+        document.getElementById("coBody").innerHTML = `
+    <div class="summary">
+      ${cart
+        .map(
+          (l) => `<div><span>${l.name} · ${l.ml}ml × ${l.qty}</span>
+        <span>${money(l.price * l.qty)}</span></div>`,
+        )
+        .join("")}
+      <div><span>Delivery</span><span>${money(SHIPPING)}</span></div>
+      <div class="grand"><span id="paymentSummary">Pay on delivery</span><span>${money(sub + SHIPPING)}</span></div>
+    </div>
+    <div class="field" id="f-name">
+      <label for="cName">Full name</label>
+      <input id="cName" autocomplete="name" placeholder="Ajmain Ahmed">
+      <span class="err">Enter the name the courier should ask for.</span>
+    </div>
+    <div class="row2">
+      <div class="field" id="f-phone">
+        <label for="cPhone">Mobile number</label>
+        <input id="cPhone" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX">
+        <span class="err">Enter a valid 11-digit number starting 01.</span>
+      </div>
+      <div class="field" id="f-city">
+        <label for="cCity">City</label>
+        <input id="cCity" autocomplete="address-level2" placeholder="Dhaka">
+        <span class="err">Which city are we delivering to?</span>
+      </div>
+    </div>
+    <div class="field" id="f-addr">
+      <label for="cAddr">Delivery address</label>
+      <textarea id="cAddr" autocomplete="street-address"
+        placeholder="House, road, area — and a landmark if the courier will need one"></textarea>
+      <span class="err">We need a full address to deliver.</span>
+    </div>
+    <div class="field" id="f-payment">
+      <label for="paymentMethod">Payment method</label>
+      <select id="paymentMethod">
+        <option value="COD">Cash on delivery</option>
+        <option value="BKASH">bKash Send Money</option>
+        <option value="SSL">Card / bank payment via SSLCommerz</option>
+      </select>
+      <span class="err">Choose a payment method.</span>
+    </div>
+    <div class="payment-note" id="bkashNote" hidden>
+      <strong>bKash Send Money</strong>
+      <span>Send the total amount to <b>01797011930</b>, then enter the transaction ID below.</span>
+      <div class="field" id="f-payment-reference">
+        <label for="paymentReference">bKash transaction ID</label>
+        <input id="paymentReference" autocomplete="off" placeholder="Example: 8A7B6C5D">
+        <span class="err">Enter the bKash transaction ID.</span>
+      </div>
+    </div>
+    <div class="payment-note" id="sslNote" hidden>
+      <strong>Secure online payment</strong>
+      <span>You will continue to SSLCommerz to pay securely by card, internet banking, or supported mobile banking.</span>
+    </div>
+    <div class="cod-note">
+      <span style="color:var(--gold)">◆</span>
+      <span>Hand the courier ${money(sub + SHIPPING)} in cash. We'll confirm on WhatsApp before dispatch.</span>
+    </div>
+    <p class="checkout-status" id="coStatus" role="alert"></p>
+    <button class="btn btn-gold btn-block" id="placeOrder">Place order · pay ${money(sub + SHIPPING)} on delivery</button>`;
+
+        const paymentMethod = document.getElementById("paymentMethod");
+        const bkashNote = document.getElementById("bkashNote");
+        const sslNote = document.getElementById("sslNote");
+        const checkoutTotal = () =>
+          sub + deliveryForCity(document.getElementById("cCity").value);
+        paymentMethod.addEventListener("change", () => {
+          const bkash = paymentMethod.value === "BKASH";
+          const ssl = paymentMethod.value === "SSL";
+          bkashNote.hidden = !bkash;
+          sslNote.hidden = !ssl;
+          document.getElementById("placeOrder").textContent = bkash
+            ? `Place order · pay ${money(checkoutTotal())} by bKash`
+            : ssl
+              ? "Continue to secure payment"
+              : `Place order · pay ${money(checkoutTotal())} on delivery`;
+          document.getElementById("paymentSummary").textContent = bkash
+            ? "Pay by bKash"
+            : ssl
+              ? "Pay securely online"
+              : "Pay on delivery";
+        });
+
+        document.getElementById("cCity").addEventListener("input", () => {
+          const shipping = deliveryForCity(
+            document.getElementById("cCity").value,
+          );
+          const total = sub + shipping;
+          document.querySelector(
+            "#checkout .summary div:nth-last-child(2) span:last-child",
+          ).textContent = money(shipping);
+          document.querySelector(
+            "#checkout .summary .grand span:last-child",
+          ).textContent = money(total);
+          document.querySelector(
+            "#checkout .cod-note span:last-child",
+          ).textContent =
+            `Hand the courier ${money(total)} in cash. We'll confirm on WhatsApp before dispatch.`;
+          if (paymentMethod.value !== "SSL") {
+            document.getElementById("placeOrder").textContent =
+              paymentMethod.value === "BKASH"
+                ? `Place order · pay ${money(total)} by bKash`
+                : `Place order · pay ${money(total)} on delivery`;
+          }
+        });
+
+        document
+          .getElementById("placeOrder")
+          .addEventListener("click", placeOrder);
+      }
+
+      async function placeOrder() {
+        const checks = [
+          ["f-name", document.getElementById("cName").value.trim().length >= 2],
+          [
+            "f-phone",
+            /^01\d{9}$/.test(
+              document.getElementById("cPhone").value.replace(/[\s-]/g, ""),
+            ),
+          ],
+          ["f-city", document.getElementById("cCity").value.trim().length >= 2],
+          [
+            "f-addr",
+            document.getElementById("cAddr").value.trim().length >= 10,
+          ],
+        ];
+        const paymentMethod = document.getElementById("paymentMethod").value;
+        const paymentReference = document
+          .getElementById("paymentReference")
+          .value.trim();
+        checks.push(["f-payment", Boolean(paymentMethod)]);
+        if (paymentMethod === "BKASH") {
+          checks.push(["f-payment-reference", paymentReference.length >= 4]);
+        }
+        let ok = true;
+        checks.forEach(([id, pass]) => {
+          document.getElementById(id).classList.toggle("bad", !pass);
+          if (!pass) ok = false;
+        });
+        if (!ok) {
+          document
+            .querySelector(".field.bad input, .field.bad textarea")
+            .focus();
+          return;
+        }
+
+        const button = document.getElementById("placeOrder");
+        const status = document.getElementById("coStatus");
+        button.disabled = true;
+        button.textContent = "Placing order...";
+        status.textContent = "";
+
+        try {
+          const catalog = await API.products.list({ limit: 48 });
+          const backendItems = cart.map((line) => {
+            const product = catalog.items.find(
+              (item) => item.name === line.name && item.brand === line.brand,
+            );
+            if (!product)
+              throw new Error(
+                `${line.name} is not available in the live catalog yet.`,
+              );
+            return {
+              product_id: product.product_id,
+              decant_size_ml: line.ml,
+              quantity: line.qty,
+            };
+          });
+
+          const result = await API.orders.place({
+            name: document.getElementById("cName").value.trim(),
+            phone: document.getElementById("cPhone").value.trim(),
+            city: document.getElementById("cCity").value.trim(),
+            address: document.getElementById("cAddr").value.trim(),
+            note: "",
+            payment_method: paymentMethod,
+            payment_reference: paymentReference,
+            items: backendItems,
+          });
+          const order = result.order;
+
+          if (paymentMethod === "SSL") {
+            const payment = await API.payment.start({
+              order_id: order.order_id,
+              phone: document.getElementById("cPhone").value.trim(),
+            });
+            window.location.href = payment.payment_url;
+            return;
+          }
+
+          document.getElementById("coTitle").textContent = "";
+          const paidBy =
+            paymentMethod === "BKASH"
+              ? "bKash payment reference received."
+              : "Pay the courier on delivery.";
+          document.getElementById("coBody").innerHTML = `
+    <div class="done">
+      <div class="done-mark">◆</div>
+      <h3>Order placed</h3>
+      <p>We'll message you on WhatsApp within the hour to confirm. ${paidBy}</p>
+      <div class="order-id">${order.reference}</div>
+      <p style="margin-bottom:24px">${money(order.total_amount)} due on arrival</p>
+      <button class="btn btn-ghost btn-block" id="keepShopping">Keep shopping</button>
+    </div>`;
+          document.querySelector("#checkout .eyebrow").textContent =
+            "Confirmed · cash on delivery";
+
+          cart = [];
+          syncCart();
+          document
+            .getElementById("keepShopping")
+            .addEventListener("click", closeAll);
+        } catch (error) {
+          status.textContent =
+            error.message || "Could not place the order. Please try again.";
+          button.disabled = false;
+          button.textContent = "Try again";
+        }
+      }
+
+      document.getElementById("toCheckout").addEventListener("click", () => {
+        if (!cart.length) return;
+        drawer.classList.remove("open");
+        document.querySelector("#checkout .eyebrow").textContent =
+          "Step 2 of 2 · Cash on delivery";
+        checkoutForm();
+        checkout.classList.add("open");
+        scrim.classList.add("open");
+      });
+      document
+        .getElementById("closeCheckout")
+        .addEventListener("click", closeAll);
+
+      /* ============================================================
+   SEARCH · NEWSLETTER · MISC
+   ============================================================ */
+      const searchInput = document.getElementById("search");
+      const runSearch = () => {
+        const activeFilter =
+          document.querySelector("#filters button.on").dataset.f;
+        renderGrid(activeFilter, searchInput.value);
+      };
+      searchInput.addEventListener("input", runSearch);
+      document.getElementById("searchBtn").addEventListener("click", () => {
+        runSearch();
+        searchInput.focus();
+      });
+
+      document.getElementById("subForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        e.target.reset();
+        toast("Subscribed. One letter a month, nothing else.");
+      });
+
+      document.getElementById("buildSet").addEventListener("click", () => {
+        document
+          .getElementById("featured")
+          .scrollIntoView({ behavior: "smooth" });
+        toast("Pick any eight 3ml vials to build your set.");
+      });
+
+      const nav = document.querySelector(".nav");
+      const navToggle = document.getElementById("navToggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      function closeMenu() {
+        nav.classList.remove("menu-open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "Open menu");
+      }
+
+      navToggle.addEventListener("click", () => {
+        const open = nav.classList.toggle("menu-open");
+        navToggle.setAttribute("aria-expanded", String(open));
+        navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      });
+
+      navLinks.addEventListener("click", (event) => {
+        if (event.target.closest("a")) closeMenu();
+      });
+
+      const accountModal = document.getElementById("account");
+      const accountBody = document.getElementById("accountBody");
+      const accountTitle = document.getElementById("accountTitle");
+      const accountBtn = document.getElementById("accountBtn");
+
+      function renderAccount(mode = "login") {
+        const user = API.Session.user;
+        if (user) {
+          accountTitle.textContent = "You are signed in";
+          accountBody.innerHTML = `
+            <div class="account-user">
+              <strong>${user.name}</strong>
+              <span>${user.email}</span>
+              <span>${user.phone}</span>
+            </div>
+            <p class="account-note">Your account is ready for faster checkout and order history.</p>
+            <div class="account-actions">
+              <button class="btn btn-gold" data-account-logout>Sign out</button>
+              <button class="btn btn-ghost" data-account-close>Continue shopping</button>
+            </div>`;
+          return;
+        }
+
+        accountTitle.textContent =
+          mode === "login" ? "Welcome back" : "Create your account";
+        accountBody.innerHTML = `
+          <div class="account-tabs">
+            <button class="${mode === "login" ? "active" : ""}" data-account-mode="login">Sign in</button>
+            <button class="${mode === "register" ? "active" : ""}" data-account-mode="register">Register</button>
+          </div>
+          <p class="account-note">Save your details for quicker checkout and order updates.</p>
+          <form id="accountForm">
+            ${mode === "register" ? `<div class="field" data-field="name"><label for="accountName">Full name</label><input id="accountName" name="name" autocomplete="name" required><span class="err"></span></div>` : ""}
+            <div class="field" data-field="email"><label for="accountEmail">Email address</label><input id="accountEmail" name="email" type="email" autocomplete="email" required><span class="err"></span></div>
+            ${mode === "register" ? `<div class="field" data-field="phone"><label for="accountPhone">Mobile number</label><input id="accountPhone" name="phone" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" required><span class="err"></span></div>` : ""}
+            <div class="field" data-field="password"><label for="accountPassword">Password</label><input id="accountPassword" name="password" type="password" minlength="8" autocomplete="${mode === "login" ? "current-password" : "new-password"}" required><span class="err"></span></div>
+            ${mode === "register" ? `<div class="field" data-field="address"><label for="accountAddress">Delivery address <span>(optional)</span></label><textarea id="accountAddress" name="address" autocomplete="street-address"></textarea><span class="err"></span></div>` : ""}
+            <p class="account-status" id="accountStatus" role="alert"></p>
+            <button class="btn btn-gold btn-block" type="submit">${mode === "login" ? "Sign in" : "Create account"}</button>
+          </form>`;
+
+        accountBody.querySelector("#accountForm").dataset.mode = mode;
+      }
+
+      function openAccount() {
+        renderAccount();
+        accountModal.classList.add("open");
+        scrim.classList.add("open");
+      }
+
+      accountBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        openAccount();
+      });
+      document.querySelectorAll("[data-open-account]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          openAccount();
+        });
+      });
+      document
+        .getElementById("closeAccount")
+        .addEventListener("click", closeAll);
+
+      accountBody.addEventListener("click", (event) => {
+        const modeButton = event.target.closest("[data-account-mode]");
+        if (modeButton) renderAccount(modeButton.dataset.accountMode);
+        if (event.target.closest("[data-account-close]")) closeAll();
+        if (event.target.closest("[data-account-logout]")) {
+          API.auth.logout();
+          renderAccount();
+          accountTitle.textContent = "Signed out";
+          updateAccountLabel();
+        }
+      });
+
+      accountBody.addEventListener("submit", async (event) => {
+        if (event.target.id !== "accountForm") return;
+        event.preventDefault();
+        const form = event.target;
+        const mode = form.dataset.mode;
+        const status = form.querySelector(".account-status");
+        status.textContent = "Working...";
+        try {
+          if (mode === "login") {
+            await API.auth.login(
+              document.getElementById("accountEmail").value,
+              document.getElementById("accountPassword").value,
+            );
+          } else {
+            await API.auth.register({
+              name: document.getElementById("accountName").value,
+              email: document.getElementById("accountEmail").value,
+              phone: document.getElementById("accountPhone").value,
+              password: document.getElementById("accountPassword").value,
+              address: document.getElementById("accountAddress").value,
+            });
+          }
+          updateAccountLabel();
+          renderAccount();
+          toast("You are signed in.");
+        } catch (error) {
+          status.textContent =
+            error.message || "Could not complete that request.";
+          API.showFieldErrors(form, error);
+        }
+      });
+
+      function updateAccountLabel() {
+        accountBtn.textContent = API.Session.user
+          ? API.Session.user.name
+          : "Account";
+      }
+      document.addEventListener("sn:auth", updateAccountLabel);
+      updateAccountLabel();
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
+
+      let toastTimer;
+      function toast(msg) {
+        const t = document.getElementById("toast");
+        t.textContent = msg;
+        t.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => t.classList.remove("show"), 2600);
+      }
+
+      document.querySelectorAll(".gift-copy").forEach((button) => {
+        button.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(button.dataset.code);
+            toast(`${button.dataset.code} copied.`);
+          } catch {
+            toast(`Gift code: ${button.dataset.code}`);
+          }
+        });
+      });
+
+      /* ============================================================
+   MOTION — hero tilt, scroll reveal
+   ============================================================ */
+      if (!reduce) {
+        const visual = document.getElementById("heroVisual");
+        const flacon = document.getElementById("heroFlacon");
+        visual.addEventListener("mousemove", (e) => {
+          const r = visual.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          flacon.style.transform = `rotateY(${x * 7}deg) rotateX(${-y * 7}deg) scale(1.02)`;
+        });
+        visual.addEventListener("mouseleave", () => {
+          flacon.style.transform = "";
+        });
+      }
+
+      function observeRise() {
+        if (reduce) {
+          document
+            .querySelectorAll(".rise")
+            .forEach((el) => el.classList.add("in"));
+          return;
+        }
+        io =
+          io ||
+          new IntersectionObserver(
+            (entries) => {
+              entries.forEach((en, i) => {
+                if (en.isIntersecting) {
+                  setTimeout(() => en.target.classList.add("in"), i * 70);
+                  io.unobserve(en.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+          );
+        document
+          .querySelectorAll(".rise:not(.in)")
+          .forEach((el) => io.observe(el));
+      }
+      observeRise();
+    </script>
+  </body>
+</html>
