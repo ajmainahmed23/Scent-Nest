@@ -209,45 +209,7 @@
             <h2>Scent match finder</h2>
           </div>
         </div>
-        <div class="match-layout rise">
-          <div class="match-panel">
-            <label for="matchInput">Describe the fragrance you want</label>
-            <textarea
-              id="matchInput"
-              rows="4"
-              placeholder="Try: fresh citrus, woody, amber or sweet vanilla tobacco"
-            ></textarea>
-
-            <div class="match-preferences">
-              <label for="matchPreference">When do you wear it?</label>
-              <select id="matchPreference">
-                <option value="regular">Regular wear</option>
-                <option value="office">Office / daily</option>
-                <option value="party">Party / evening</option>
-                <option value="night">Night / date night</option>
-                <option value="casual">Casual / relaxed</option>
-              </select>
-            </div>
-
-            <div class="match-actions">
-              <button class="btn btn-gold" id="matchBtn" type="button">
-                Find similar scents
-              </button>
-              <button class="btn btn-ghost" id="matchClear" type="button">
-                Clear
-              </button>
-            </div>
-            <p class="match-hint">
-              We compare your notes and wear preference against the house
-              catalog and suggest the closest decants in stock.
-            </p>
-          </div>
-          <div class="match-results" id="matchResults">
-            <div class="match-empty">
-              Example: “fresh citrus, woody, amber” or “vanilla tobacco”
-            </div>
-          </div>
-        </div>
+        <div id="match-react-root"></div>
       </section>
 
       <!-- ============ 7. SHOP BY NOTE ============ -->
@@ -494,6 +456,9 @@
     <script src="app.js"></script>
     <script src="matcher.js"></script>
     <script src="catalog-data.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="match-react.js"></script>
     <script>
       /* ============================================================
    DATA — real note structures, decant pricing in BDT
@@ -821,185 +786,188 @@
       const matchPreference = document.getElementById("matchPreference");
       const matchResults = document.getElementById("matchResults");
 
-      function preferenceTimeOfDay(value) {
-        const map = {
-          regular: ["day", "night", "office", "casual"],
-          office: ["day", "office", "casual"],
-          party: ["night", "evening", "party"],
-          night: ["night", "evening", "party"],
-          casual: ["day", "casual", "office"],
-        };
-        return map[value] || map.regular;
-      }
-
-      function productTimeOfDay(product) {
-        const text =
-          `${product.name} ${product.brand} ${product.notes || ""}`.toLowerCase();
-        if (/amber|vanilla|tobacco|oud|smoky|patchouli|spicy/.test(text)) {
-          return ["night", "evening", "party"];
-        }
-        if (
-          /fresh|citrus|aquatic|marine|green|mint|bergamot|lavender/.test(text)
-        ) {
-          return ["day", "office", "casual"];
-        }
-        if (
-          /floral|sweet|jasmine|rose|orange blossom|white floral/.test(text)
-        ) {
-          return ["day", "casual", "office"];
-        }
-        return ["day", "night", "casual"];
-      }
-
-      function buildMatchTarget(rawText, preference) {
-        const text = String(rawText || "").trim();
-        const tokens = text
-          .toLowerCase()
-          .replace(/&/g, " ")
-          .replace(/[^a-z0-9\s]/g, " ")
-          .split(/\s+/)
-          .filter(Boolean);
-
-        const topTerms = [
-          "citrus",
-          "bergamot",
-          "grapefruit",
-          "lemon",
-          "orange",
-          "pepper",
-          "mint",
-          "apple",
-          "marine",
-          "fresh",
-          "green",
-          "lavender",
-          "saffron",
-          "cinnamon",
-          "nutmeg",
-          "ginger",
-          "pineapple",
-        ];
-        const middleTerms = [
-          "woody",
-          "amber",
-          "vanilla",
-          "sweet",
-          "spicy",
-          "floral",
-          "jasmine",
-          "iris",
-          "tobacco",
-          "dates",
-          "praline",
-          "coffee",
-          "tea",
-          "patchouli",
-          "benzoin",
-          "oud",
-          "amberwood",
-          "floral",
-        ];
-        const baseTerms = [
-          "musk",
-          "cedar",
-          "sandalwood",
-          "vetiver",
-          "amberwood",
-          "tonka",
-          "labdanum",
-          "resin",
-          "smoky",
-          "woody",
-          "vanilla",
-          "oud",
-          "patchouli",
-          "musk",
-        ];
-
-        const top = [];
-        const middle = [];
-        const base = [];
-
-        tokens.forEach((token) => {
-          if (topTerms.includes(token)) top.push(token);
-          else if (middleTerms.includes(token)) middle.push(token);
-          else if (baseTerms.includes(token)) base.push(token);
-          else if (!top.length && !middle.length && !base.length)
-            base.push(token);
-          else if (top.length || middle.length) base.push(token);
-        });
-
-        return {
-          name: text || "My scent match",
-          brand: "Your preference",
-          gender: "unisex",
-          notes: {
-            top: [...new Set(top)].slice(0, 4),
-            middle: [...new Set(middle)].slice(0, 4),
-            base: [...new Set(base)].slice(0, 4),
-          },
-          accords: [...new Set(tokens)].slice(0, 5),
-          season: [],
-          timeOfDay: preferenceTimeOfDay(preference),
-        };
-      }
-
-      function renderMatchResults() {
-        if (!window.ScentMatch) {
-          matchResults.innerHTML =
-            '<div class="match-empty">The matcher is not available right now.</div>';
-          return;
+      if (matchInput) {
+        function preferenceTimeOfDay(value) {
+          const map = {
+            regular: ["day", "night", "office", "casual"],
+            office: ["day", "office", "casual"],
+            party: ["night", "evening", "party"],
+            night: ["night", "evening", "party"],
+            casual: ["day", "casual", "office"],
+          };
+          return map[value] || map.regular;
         }
 
-        const query = matchInput.value.trim();
-        if (!query) {
-          matchResults.innerHTML =
-            '<div class="match-empty">Example: “fresh citrus, woody, amber” or “vanilla tobacco”</div>';
-          return;
+        function productTimeOfDay(product) {
+          const text =
+            `${product.name} ${product.brand} ${product.notes || ""}`.toLowerCase();
+          if (/amber|vanilla|tobacco|oud|smoky|patchouli|spicy/.test(text)) {
+            return ["night", "evening", "party"];
+          }
+          if (
+            /fresh|citrus|aquatic|marine|green|mint|bergamot|lavender/.test(
+              text,
+            )
+          ) {
+            return ["day", "office", "casual"];
+          }
+          if (
+            /floral|sweet|jasmine|rose|orange blossom|white floral/.test(text)
+          ) {
+            return ["day", "casual", "office"];
+          }
+          return ["day", "night", "casual"];
         }
 
-        const preference = matchPreference.value;
-        const target = buildMatchTarget(query, preference);
-        const inventory = PRODUCTS.map((p) => ({
-          ...p,
-          image: p.image,
-          timeOfDay: productTimeOfDay(p),
-          notes: {
-            top: Array.isArray(p.top) ? p.top : [],
-            middle: Array.isArray(p.mid) ? p.mid : [],
-            base: Array.isArray(p.base) ? p.base : [],
-          },
-          accords: [
-            ...(Array.isArray(p.top) ? p.top.slice(0, 3) : []),
-            ...(Array.isArray(p.mid) ? p.mid.slice(0, 2) : []),
-            ...(Array.isArray(p.base) ? p.base.slice(0, 2) : []),
-          ],
-        }));
+        function buildMatchTarget(rawText, preference) {
+          const text = String(rawText || "").trim();
+          const tokens = text
+            .toLowerCase()
+            .replace(/&/g, " ")
+            .replace(/[^a-z0-9\s]/g, " ")
+            .split(/\s+/)
+            .filter(Boolean);
 
-        const results = window.ScentMatch.recommend(target, inventory, {
-          limit: 3,
-          minMatch: 15,
-        });
+          const topTerms = [
+            "citrus",
+            "bergamot",
+            "grapefruit",
+            "lemon",
+            "orange",
+            "pepper",
+            "mint",
+            "apple",
+            "marine",
+            "fresh",
+            "green",
+            "lavender",
+            "saffron",
+            "cinnamon",
+            "nutmeg",
+            "ginger",
+            "pineapple",
+          ];
+          const middleTerms = [
+            "woody",
+            "amber",
+            "vanilla",
+            "sweet",
+            "spicy",
+            "floral",
+            "jasmine",
+            "iris",
+            "tobacco",
+            "dates",
+            "praline",
+            "coffee",
+            "tea",
+            "patchouli",
+            "benzoin",
+            "oud",
+            "amberwood",
+            "floral",
+          ];
+          const baseTerms = [
+            "musk",
+            "cedar",
+            "sandalwood",
+            "vetiver",
+            "amberwood",
+            "tonka",
+            "labdanum",
+            "resin",
+            "smoky",
+            "woody",
+            "vanilla",
+            "oud",
+            "patchouli",
+            "musk",
+          ];
 
-        if (!results.length) {
-          matchResults.innerHTML = `
+          const top = [];
+          const middle = [];
+          const base = [];
+
+          tokens.forEach((token) => {
+            if (topTerms.includes(token)) top.push(token);
+            else if (middleTerms.includes(token)) middle.push(token);
+            else if (baseTerms.includes(token)) base.push(token);
+            else if (!top.length && !middle.length && !base.length)
+              base.push(token);
+            else if (top.length || middle.length) base.push(token);
+          });
+
+          return {
+            name: text || "My scent match",
+            brand: "Your preference",
+            gender: "unisex",
+            notes: {
+              top: [...new Set(top)].slice(0, 4),
+              middle: [...new Set(middle)].slice(0, 4),
+              base: [...new Set(base)].slice(0, 4),
+            },
+            accords: [...new Set(tokens)].slice(0, 5),
+            season: [],
+            timeOfDay: preferenceTimeOfDay(preference),
+          };
+        }
+
+        function renderMatchResults() {
+          if (!window.ScentMatch) {
+            matchResults.innerHTML =
+              '<div class="match-empty">The matcher is not available right now.</div>';
+            return;
+          }
+
+          const query = matchInput.value.trim();
+          if (!query) {
+            matchResults.innerHTML =
+              '<div class="match-empty">Example: “fresh citrus, woody, amber” or “vanilla tobacco”</div>';
+            return;
+          }
+
+          const preference = matchPreference.value;
+          const target = buildMatchTarget(query, preference);
+          const inventory = PRODUCTS.map((p) => ({
+            ...p,
+            image: p.image,
+            timeOfDay: productTimeOfDay(p),
+            notes: {
+              top: Array.isArray(p.top) ? p.top : [],
+              middle: Array.isArray(p.mid) ? p.mid : [],
+              base: Array.isArray(p.base) ? p.base : [],
+            },
+            accords: [
+              ...(Array.isArray(p.top) ? p.top.slice(0, 3) : []),
+              ...(Array.isArray(p.mid) ? p.mid.slice(0, 2) : []),
+              ...(Array.isArray(p.base) ? p.base.slice(0, 2) : []),
+            ],
+          }));
+
+          const results = window.ScentMatch.recommend(target, inventory, {
+            limit: 3,
+            minMatch: 15,
+          });
+
+          if (!results.length) {
+            matchResults.innerHTML = `
             <div class="match-empty">
               We could not find a close match from the current catalog. Try a
               broader description like “fresh, woody, spicy” or “sweet vanilla”.
             </div>`;
-          return;
-        }
+            return;
+          }
 
-        matchResults.innerHTML = results
-          .map((result) => {
-            const product = PRODUCTS.find(
-              (item) =>
-                item.name === result.name && item.brand === result.brand,
-            );
-            const image =
-              product?.image || "all_perfume_photos_HD/Hawas_Ice.jpg";
+          matchResults.innerHTML = results
+            .map((result) => {
+              const product = PRODUCTS.find(
+                (item) =>
+                  item.name === result.name && item.brand === result.brand,
+              );
+              const image =
+                product?.image || "all_perfume_photos_HD/Hawas_Ice.jpg";
 
-            return `
+              return `
               <article class="match-card">
                 <img src="${image}" alt="${result.name}" />
                 <div class="match-card-body">
@@ -1012,24 +980,25 @@
                 </div>
               </article>
             `;
-          })
-          .join("");
-      }
-
-      document
-        .getElementById("matchBtn")
-        .addEventListener("click", renderMatchResults);
-      document.getElementById("matchClear").addEventListener("click", () => {
-        matchInput.value = "";
-        matchPreference.value = "regular";
-        renderMatchResults();
-      });
-      matchPreference.addEventListener("change", renderMatchResults);
-      matchInput.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
-          renderMatchResults();
+            })
+            .join("");
         }
-      });
+
+        document
+          .getElementById("matchBtn")
+          .addEventListener("click", renderMatchResults);
+        document.getElementById("matchClear").addEventListener("click", () => {
+          matchInput.value = "";
+          matchPreference.value = "regular";
+          renderMatchResults();
+        });
+        matchPreference.addEventListener("change", renderMatchResults);
+        matchInput.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
+            renderMatchResults();
+          }
+        });
+      }
 
       /* ============================================================
    CART
